@@ -1,0 +1,9 @@
+.addressField {
+  &::before {
+    content: ', ';
+  }
+
+  &:first-child::before {
+    display: none;
+  }
+}

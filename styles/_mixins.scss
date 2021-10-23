@@ -1,0 +1,25 @@
+@import '/styles/variables';
+
+@mixin xs-up() {
+  @media (min-width: $break-xs) {
+    @content;
+  }
+}
+
+@mixin sm-up() {
+  @media (min-width: $break-sm) {
+    @content;
+  }
+}
+
+@mixin md-up() {
+  @media (min-width: $break-md) {
+    @content;
+  }
+}
+
+@mixin lg-up() {
+  @media (min-width: $break-lg) {
+    @content;
+  }
+}

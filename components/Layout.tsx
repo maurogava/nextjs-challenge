@@ -12,14 +12,24 @@ const Layout: FC = ({ children }) => {
         <div className={styles.container}>
           <Link href="/" prefetch={false}>
             <a>
-              <Logo />
+              <Logo className={styles.logo} viewBox="0 0 160 39" />
             </a>
           </Link>
         </div>
       </header>
+
       <div className={cn(styles.content, styles.container)}>{children}</div>
-      <footer>
-        <div className={styles.container}>footer</div>
+
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <Logo className={styles.footerLogo} viewBox="0 0 160 39" />
+          <p className={styles.footerText}>
+            ©2021 MAKESPACE, LLC. NEW YORK, NY
+          </p>
+          <p className={styles.footerText}>
+            MakeSpace® is a registered trademark of MakeSpace, LLC.
+          </p>
+        </div>
       </footer>
     </>
   )

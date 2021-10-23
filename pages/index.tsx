@@ -3,24 +3,21 @@ import { StoragePlan, PlanNames } from 'types/storagePlans'
 import { getPlans } from 'services/storagePlans'
 import Head from 'next/head'
 import Layout from 'components/Layout'
-import Card from 'components/Card'
+import StoragePlans from 'components/StoragePlans'
 
-const Home: NextPage<{ plans: StoragePlan[] }> = ({ plans }) => {
+type HomeProps = {
+  plans: StoragePlan[]
+}
+
+const Home: NextPage<HomeProps> = ({ plans }) => {
   return (
     <>
       <Head>
         <title>Makespace Storage Plans</title>
-        <meta
-          name="description"
-          content="We'll move it, store it, and bring it back when you need it—full-service storage at an affordable price."
-        />
       </Head>
 
       <Layout>
-        <h1>Select a Storage Plan</h1>
-        {plans.map((plan) => (
-          <Card key={plan.plan} plan={plan}></Card>
-        ))}
+        <StoragePlans plans={plans} />
       </Layout>
     </>
   )

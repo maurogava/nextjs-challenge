@@ -1,14 +1,59 @@
+@import '/styles/mixins';
+
 .header {
-  color: var(--text-light);
-  background-color: var(--green-dark);
-  padding: 1.2rem;
+  color: var(--light-000);
+  background-color: var(--green-800);
+  padding: var(--space-md) var(--space-xl);
+
+  @include sm-up() {
+    padding: var(--space-xl);
+  }
+}
+
+.logo,
+.footerLogo {
+  width: 13rem;
+  height: 3.2rem;
+
+  @include sm-up() {
+    width: 16rem;
+    height: 3.9rem;
+  }
 }
 
 .container {
-  max-width: 180rem;
   margin: 0 auto;
+  width: 100%;
 }
 
 .content {
   padding: 2rem;
+  flex: 1 0 auto;
+}
+
+.footer {
+  color: var(--grey-400);
+  background-color: var(--green-700);
+  padding: var(--space-xl) var(--space-xl);
+
+  @include sm-up() {
+    padding: var(--space-xxl) var(--space-xl);
+  }
+}
+
+.footerLogo {
+  margin-bottom: var(--space-md);
+
+  @include sm-up() {
+    margin-bottom: var(--space-xl);
+  }
+}
+
+.footerText {
+  margin: 0 0 var(--space-xs);
+  font-size: var(--fs-xs);
+
+  @include sm-up() {
+    font-size: var(--fs-sm);
+  }
 }

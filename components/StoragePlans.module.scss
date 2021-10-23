@@ -1,0 +1,58 @@
+@import '/styles/mixins';
+
+.wrapper {
+  overflow-x: auto;
+  margin: 0 calc(-1 * var(--space-xl));
+  padding: 0 0 var(--space-xl) 0;
+
+  scroll-snap-type: x mandatory;
+  /* Enable Safari touch scrolling physics which is needed for scroll snap */
+  -webkit-overflow-scrolling: touch;
+}
+
+.innerWrapper {
+  --cell-size: 1fr;
+  --justify-content: start;
+
+  display: grid;
+  grid-template-columns:
+    calc(var(--space-xl) - var(--space-lg)) repeat(
+      var(--cards),
+      var(--cell-size)
+    )
+    calc(var(--space-xl) - var(--space-lg));
+  gap: var(--space-lg);
+  justify-content: var(--justify-content);
+
+  &::before,
+  &::after {
+    content: '';
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  &::after {
+    grid-column: 6;
+  }
+
+  @include sm-up() {
+    --cell-size: 30rem;
+    --justify-content: center;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+
+  @include sm-up() {
+    font-size: var(--fs-xxl);
+    margin: var(--space-xxl) 0;
+  }
+}
+
+.element {
+  scroll-snap-align: center;
+}

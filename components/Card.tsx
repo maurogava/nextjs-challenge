@@ -3,28 +3,36 @@ import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import { StoragePlan } from 'types/storagePlans'
+import { parsePlanName } from 'utils/parsing'
 
 import styles from './Card.module.scss'
 
-const Card: FC<{ plan: StoragePlan }> = ({ plan: storagePlan }) => {
+type CardProps = {
+  plan: StoragePlan
+  className?: string
+}
+
+const Card: FC<CardProps> = ({ plan: storagePlan, className }) => {
   const { name, plan, description } = storagePlan
 
   return (
-    <div className={styles.wrapper}>
-      <h2>{name}</h2>
+    <article className={cn(styles.card, className)}>
+      <h2 className={styles.title}>{name}</h2>
+
       <Image
         src={`/images/image-${plan}.jpg`}
         width="295"
         height="195"
         alt={`picture representing a space of ${plan}`}
       />
-      <p>{plan}</p>
-      <p>{description}</p>
+
+      <p className={styles.planSize}>{parsePlanName(plan)}</p>
+      <p className={styles.description}>{description}</p>
 
       <Link href={`/checkout/${encodeURIComponent(plan)}`}>
-        <a>Select</a>
+        <a className="btn">Select</a>
       </Link>
-    </div>
+    </article>
   )
 }
 

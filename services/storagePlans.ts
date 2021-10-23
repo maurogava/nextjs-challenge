@@ -2,7 +2,7 @@ import csv from 'csvtojson'
 import path from 'path'
 import { PlanNames, RawStoragePlan, StoragePlan } from 'types/storagePlans'
 
-// This data is mocked but it should come from DB
+// This data is mocked but it should come from DB in a real life project
 const planDescriptions = {
   [PlanNames.sm]:
     "Ten square feet is nothing to scoff at! Store your off-season shoes, finished books, or cool toys you're saving for that future kid in your life.",
@@ -34,7 +34,7 @@ export const getPlans = async (): Promise<StoragePlan[] | null> => {
   let res = null
 
   try {
-    // This data is retrieved from the csv files but it should come from DB
+    // This data is retrieved from the csv files but it should come from DB in a real life project
     const filePath = path.join(process.cwd(), 'data/storage_plans.csv')
     const tempRes: RawStoragePlan[] = await csv().fromFile(filePath)
     res = tempRes.map((plan) => adapter(plan))
@@ -49,7 +49,7 @@ export const getPlan = async (
   storagePlan: PlanNames
 ): Promise<StoragePlan | null> => {
   try {
-    // This data is retrieved from the csv files but it should come from DB
+    // This data is retrieved from the csv files but it should come from DB in a real life project
     const filePath = path.join(process.cwd(), 'data/storage_plans.csv')
     const tempRes: RawStoragePlan[] = await csv().fromFile(filePath)
     const plan = tempRes.find(({ plan }) => storagePlan === plan)

@@ -1,9 +1,46 @@
+@import '/styles/mixins';
+
+.detailsWrapper {
+  display: flex;
+  flex-direction: column;
+  background: var(--light-100);
+  border: 1px solid var(--grey-400);
+  padding: var(--space-md);
+
+  @include md-up() {
+    width: 34rem;
+    margin-left: auto;
+  }
+}
+
+.planName {
+  text-transform: capitalize;
+}
+
+.addressWrapper {
+  font-style: normal;
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.price {
+  flex: 1 0 auto;
+  border-top: 0.1rem solid var(--grey-400);
+  padding-top: var(--space-md);
+}
+
 .addressField {
-  &::before {
+  &::after {
     content: ', ';
   }
 
-  &:first-child::before {
+  &:last-child::after {
     display: none;
   }
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+  margin: var(--space-xxl) 0 var(--space-md);
 }

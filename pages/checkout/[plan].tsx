@@ -7,7 +7,13 @@ import { FormContextProvider } from 'components/checkout/useCheckoutForm'
 import CheckoutForm from 'components/checkout/CheckoutForm'
 import PurchaseDetails from 'components/checkout/PurchaseDetails'
 
-const PlanCheckout: NextPage<{ plan: StoragePlan }> = ({ plan }) => {
+import styles from './Plan.module.scss'
+
+type PlanCheckoutProps = {
+  plan: StoragePlan
+}
+
+const PlanCheckout: NextPage<PlanCheckoutProps> = ({ plan }) => {
   return (
     <>
       <Head>
@@ -15,9 +21,11 @@ const PlanCheckout: NextPage<{ plan: StoragePlan }> = ({ plan }) => {
       </Head>
       <FormContextProvider>
         <Layout>
-          <h1>Checkout</h1>
-          <CheckoutForm />
-          <PurchaseDetails plan={plan} />
+          <div className={styles.wrapper}>
+            <h1 className={styles.title}>Checkout</h1>
+            <CheckoutForm />
+            <PurchaseDetails plan={plan} />
+          </div>
         </Layout>
       </FormContextProvider>
     </>

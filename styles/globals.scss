@@ -1,8 +1,6 @@
-:root {
-  --text-light: #fff;
-  --green: #39ae5a;
-  --green-dark: #0f3916;
-}
+@import '/styles/variables';
+@import '/styles/css-variables';
+@import '/styles/mixins';
 
 html,
 body {
@@ -10,6 +8,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
 }
 
 html {
@@ -17,7 +16,15 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: var(--fs-default);
+  color: var(--grey-800);
+  background-color: var(--light-200);
+}
+
+#__next {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -29,3 +36,45 @@ a {
   box-sizing: border-box;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0 0 var(--space-lg);
+}
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  padding: var(--space-lg) var(--space-xxl);
+  background-color: var(--green-400);
+  color: var(--light-100);
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    filter: brightness(0.85);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: normal;
+
+    &:hover,
+    &:active {
+      filter: none;
+    }
+  }
+}
+
+button,
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  border: 1px solid var(--grey-300);
+}
